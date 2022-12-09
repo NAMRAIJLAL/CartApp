@@ -1,0 +1,2 @@
+json.extract! @stores,
+ :ids

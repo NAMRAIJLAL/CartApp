@@ -1,0 +1,33 @@
+<div class="container border border-success shadow back mt-5">
+  <h1 class="text-center">Create Store</h1>
+  <div class="container mb-5 mx-auto backg shadow">
+    <%= form_with(scope: :store,url: store_index_path(@store.id),local: true, method: :post) do |f| %>
+      <div class="form-group">
+        <%= f.label :Store %><br />
+        <%= f.text_field :name, autofocus: true, autocomplete: "Store Name", class: "form-control border border-success" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :category %><br />
+        <%= f.text_field :category, autocomplete: "enter Category", class: "form-control border border-success" %>
+      </div>
+      <div class="field">
+        <%= f.label :products %><br />
+        <%= f.text_field :products, autocomplete: "enter Product", class: "form-control border border-success" %>
+      </div>
+        <div class="field">
+        <%= f.label :price %><br />
+        <%= f.text_field :price, autocomplete: "enter price", class: "form-control border border-success" %>
+      </div>
+     
+      <div class="field">
+					<label for="exampleFormControlSelect2">Select User</label>
+					<%= f.select :user_id,User.all.pluck(:username,:id),{prompt:'select'},{class: "form-control border border-success"}%>
+			</div>
+
+      <div class="actions mt-5 text-center">
+        <%= f.submit "Add" , class: "btn btn-success"%>
+      </div>
+    <% end %>
+  </div>
+</div>

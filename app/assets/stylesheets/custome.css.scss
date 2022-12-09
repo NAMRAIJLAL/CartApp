@@ -1,0 +1,78 @@
+@import 'bootstrap/dist/css/bootstrap';
+.size{
+    margin-top: 10px;
+    text-align: center;
+}
+.text{
+    color: black !important;
+}
+html{
+  body{
+  background-color:rgb(190, 219, 157)
+  }
+}
+.dropbtn {
+    background-color:#b0f6b4;
+    color: black;
+    padding: 16px;
+    border-radius: 10%;
+  }
+  
+   .dropdown {
+    position: center;
+    display: inline-block;
+    color:black;
+  }
+  
+ 
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: #fac3b2;
+    z-index: 1;
+  }
+  
+
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color:#8af18f;}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {background-color: #8af18f;}
+  
+  .backg{
+      background-image: linear-gradient(to bottom right, rgb(190, 219, 157) ,#ffeeba);
+  }
+  .back{
+    background-image:linear-gradient(to right, rgba(255,0,0,0),rgb(190, 219, 157));
+  }
+  .cartContainer{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    border-style: groove;
+    text-align: center;
+    margin: auto;
+}
+
+.final{
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  border-style: groove;
+  background-color: gainsboro;
+}
+.mytable{
+  display: grid;
+}

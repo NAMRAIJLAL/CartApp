@@ -1,0 +1,28 @@
+
+<div class="container">
+<% if @store != nil %>
+<div class="container mt-3 border border-success">
+<h1 class="text-center"><%= @store.name %></h1>
+	<table class="table table-bordered back " >
+		<thead>
+				<% @store.categories.keys.each do |obj| %>
+				<tr>
+					<th scope="col" class="text-center"><%= obj %></th>
+						<% @store.categories[obj].each do |v|%>
+							<td scope="row" class="text-center"><%= v[0]%> = (<%= v[1]%>) <%=link_to 'add', usercart_path(user_id: current_user.id, product: v[0],price: v[1]), method: :patch%></td>
+						<% end %>
+				</tr>
+				<% end %>
+		</thead>
+	</table>
+</div>
+<% else %>
+	<h1 class= "container mt-3 text-center" ><%= flash[:notice] = "Has not assigned any Store" %></h1>
+<% end %>
+<div class="container text-center">
+<% if user_signed_in?  %>
+	<% if current_user.id == @store.user_id %>
+  	  <%= link_to 'edit Store', edit_store_path(@store.id), class: "btn btn-info mb-2 shadow"%>
+	  <% end %>
+<% end %>
+</div>

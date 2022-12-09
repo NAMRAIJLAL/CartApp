@@ -1,0 +1,35 @@
+<div class="border border-lg">
+<nav class="navbar navbar-expand-lg shadow-lg navbar-light back bg-light">
+  <a class="navbar-brand text" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+      </li>
+      <li class="nav-item active">
+
+    <% if user_signed_in? %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-link text ' %>
+      <li class="mt-2 ml-2 nav-item text">
+        <%= current_user.username%>
+        </li>
+      <% if current_user.is_admin %>
+        <li class="mt-2 ml-2 nav-item text">
+          <%= link_to 'Stores', store_index_path, class: "text" %>
+          <%= link_to 'User', welcomes_path, class: "text" %>
+        </li>
+      <% end %>
+        <%# <%= link_to 'Store List'  %> 
+    <% else %>
+      <%= link_to "Login", new_user_session_path, :class => 'nav-link text'  %>
+    <% end %>
+
+     
+        <%# <a class="nav-link" href="/users/sign_in">Login <span class="sr-only">(current)</span></a> %>
+    
+  </div>
+</nav>
+</div>

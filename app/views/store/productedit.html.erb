@@ -1,0 +1,29 @@
+<h1>ADD Product Page</h1>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Category</button>
+
+
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">New product</h5>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+						<div class="col-10">
+						<%=  form.text_field :value, class: "form-control shadow rounded" , placeholder: "Enter product" %>
+						</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline-info btn-lg" data-dismiss="modal">Close</button>
+					<div class="actions">
+						<%= form.submit 'submit', class: "btn btn-outline-info btn-lg" %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% end %>

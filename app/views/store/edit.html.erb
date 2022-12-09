@@ -1,0 +1,80 @@
+<div class="container text-center backg mt-5 border border-success ">
+	<h1 class= "mt-3 text-center" ><%= @store.name %></h1>
+	<table class="table back table-sm shadow border ">
+		<thead>
+			<% @store.categories.keys.each do |cat| %>
+				<tr>
+					<div class="container">
+						<th scope="col" class= "align-middle" ><%= cat %></th>
+						<% @store.categories[cat].map do |p|%>
+							<td scope="row" class= "align-middle"><%= p[0] %></td>
+						<% end %>
+						<td>
+						<div class=" d-flex form-group">
+							<button class="mt-3 btn-sm  shadow btn-primary" id="edit" data-toggle="modal" data-target="#exampleModal" data-whatever="obj"  onclick= "myFunction('<%= cat %>','<%= @store.categories[cat].map do |p| p[0] end %>','<%= @store.categories[cat].map do |p| p[1] end %>')" >edit</button>
+							<%= link_to 'X',store_path(@store.id,store:{cat: cat}), method: :patch ,  class: "mt-3 btn shadow btn-danger"%>
+						</td>
+					</div>
+				</tr>
+			<% end %>
+		</thead>
+	</table>
+	<button type="button" class="btn mb-2 shadow btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Category</button>
+</div>
+<%= form_with(scope: :store,url: store_path(@store.id),local: true, method: :patch) do |form| %>
+	<div class="modal fade" id="exampleModal" tabindex="-1" var="obj" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">	
+				<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">New Category</h5>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<div class="col-10">
+								<%=  form.text_field :key, class: "form-control shadow rounded" ,id: "cat" %>
+							</div>
+							<div class="col-10">
+								<%=  form.text_field :values, class: "form-control shadow rounded", id: "prods"  %>
+							</div>
+							<div class="col-10">
+								<%=  form.text_field :price, class: "form-control shadow rounded", id: "p"  %>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline-info btn-lg" data-dismiss="modal">Close</button>
+						<div class="actions">
+							<%= form.submit 'save', class: "btn btn-outline-info btn-lg" %>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% if @store.user_id==nil %>
+		<div class="container">
+			<div class="col-10">
+				<label for="exampleFormControlSelect2">Select User</label>
+					<%= form.select :user_id,User.all.pluck(:username,:id),{prompt:'select'},{class: "form-control border border-success"}%>
+			</div>
+		</div>
+	<% end %>
+<% end %>
+
+<script type="text/javascript">
+	
+	function myFunction(catgeory,products,price) {
+		console.log(products);
+		var cat= document.getElementById("cat");
+		cat.value = catgeory;
+		console.log(cat);
+		var prods= document.getElementById("prods");
+		prods.value = products.replace(/[\[\]/"\"\"']+/g,'');
+		// console.log(prods);
+		var p= document.getElementById("p");
+		p.value = price.replace(/[\[\]/"\"\"']+/g,'');
+		console.log(p);
+  	}
+
+</script>
